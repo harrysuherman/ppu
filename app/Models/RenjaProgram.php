@@ -20,6 +20,6 @@ class RenjaProgram extends Model
     }
 
     public function indikator(){
-        return $this->hasMany(RenjaProgramIndikator::class);
+        return $this->hasMany(RenjaProgramIndikator::class,'renja_program_id','id');
     }
 }
