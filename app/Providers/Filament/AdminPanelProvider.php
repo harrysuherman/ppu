@@ -26,12 +26,16 @@ use Joaopaulolndev\FilamentEditProfile\Pages\EditProfilePage;
 use Leandrocfe\FilamentApexCharts\FilamentApexChartsPlugin;
 use Swis\Filament\Backgrounds\FilamentBackgroundsPlugin;
 use Filament\Enums\ThemeMode;
+use Filament\Support\Enums\MaxWidth;
+use IbrahimBougaoua\FilaSortable\FilaSortablePlugin;
+use SolutionForest\FilamentPanphp\Components\PanOverview;
 
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
+            ->maxContentWidth(MaxWidth::Full)
             ->brandName('APLIKASI EVALUASI PEMBANGUNAN PEMDA')
             ->brandLogo(fn () => view('filament.admin.logo'))
             ->default()
@@ -77,6 +81,8 @@ class AdminPanelProvider extends PanelProvider
                     ,
             ])
             ->plugins([
+                \Schmeits\FilamentPanAnalyticsWidget\FilamentPanAnalyticsWidgetPlugin::make()
+                ->searchable(),
                 \TomatoPHP\FilamentUsers\FilamentUsersPlugin::make(),
                 \Hasnayeen\Themes\ThemesPlugin::make(),
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
@@ -96,6 +102,7 @@ class AdminPanelProvider extends PanelProvider
                 ]),
                 FilamentApexChartsPlugin::make(),
                 FilamentBackgroundsPlugin::make(),
+                FilaSortablePlugin::make()
             ])
             ->navigationGroups([
                 NavigationGroup::make()

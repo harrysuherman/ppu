@@ -13,17 +13,17 @@ class StatsOverview extends BaseWidget
     {
         return [
         Stat::make('PAGU RKPD', number_format(\App\Models\RenjaSubKegiatan::sum('pagu_rkpd')))
-            ->description('32k increase')
-            ->descriptionIcon('heroicon-m-arrow-trending-up'),
+            // ->description('32k increase')
+            // ->descriptionIcon('heroicon-m-arrow-trending-up')
+            ,
         Stat::make('PAGU APBD', number_format(\App\Models\RenjaSubKegiatan::sum('pagu_apbd')))
-            ->description('7% decrease')
-            ->descriptionIcon('heroicon-m-arrow-trending-down'),
+            // ->description('7% decrease')
+            // ->descriptionIcon('heroicon-m-arrow-trending-down')
+            ,
         Stat::make('PAGU RKPD PERUBAHAN', number_format(\App\Models\RenjaSubKegiatan::sum('pagu_rkpd')))
-            ->description('3% increase')
-            ->descriptionIcon('heroicon-m-arrow-trending-up'),
-        Stat::make('Unique views', '192.1k')
-            ->description('32k increase')
-            ->descriptionIcon('heroicon-m-arrow-trending-up'),
+            // ->description('3% increase')
+            // ->descriptionIcon('heroicon-m-arrow-trending-up')
+            ,
         ];
     }
 }

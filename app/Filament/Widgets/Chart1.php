@@ -20,7 +20,7 @@ class Chart1 extends ApexChartWidget
      *
      * @var string|null
      */
-    protected static ?string $heading = 'Chart1';
+    protected static ?string $heading = 'Pagu Anggaran';
 
     /**
      * Chart options (series, labels, types, size, animations...)
@@ -38,24 +38,40 @@ class Chart1 extends ApexChartWidget
             'series' => [
                 [
                     'name' => '2021',
-                    'data' => [2, 5, 16, 8, 10],
+                    'data' => [
+                        \App\Models\RenjaSubKegiatan::whereTahunAnggaran(2021)->sum('pagu_rkpd'),
+                        \App\Models\RenjaSubKegiatan::whereTahunAnggaran(2021)->sum('pagu_apbd'),
+                        \App\Models\RenjaSubKegiatan::whereTahunAnggaran(2021)->sum('pagu_rkpd_perubahan'),
+                    ],
                 ]
                 ,
                 [
                     'name' => '2022',
-                    'data' => [7, 10, 13, 15, 18],
+                    'data' => [
+                        \App\Models\RenjaSubKegiatan::whereTahunAnggaran(2022)->sum('pagu_rkpd'),
+                        \App\Models\RenjaSubKegiatan::whereTahunAnggaran(2022)->sum('pagu_apbd'),
+                        \App\Models\RenjaSubKegiatan::whereTahunAnggaran(2022)->sum('pagu_rkpd_perubahan'),
+                    ],
                 ],
                 [
                     'name' => '2023',
-                    'data' => [7, 10, 13, 15, 18],
+                    'data' => [
+                        \App\Models\RenjaSubKegiatan::whereTahunAnggaran(2023)->sum('pagu_rkpd'),
+                        \App\Models\RenjaSubKegiatan::whereTahunAnggaran(2023)->sum('pagu_apbd'),
+                        \App\Models\RenjaSubKegiatan::whereTahunAnggaran(2023)->sum('pagu_rkpd_perubahan'),
+                    ],
                 ],
                 [
                     'name' => '2024',
-                    'data' => [7, 10, 13, 15, 18],
+                    'data' => [
+                        \App\Models\RenjaSubKegiatan::whereTahunAnggaran(2024)->sum('pagu_rkpd'),
+                        \App\Models\RenjaSubKegiatan::whereTahunAnggaran(2024)->sum('pagu_apbd'),
+                        \App\Models\RenjaSubKegiatan::whereTahunAnggaran(2024)->sum('pagu_rkpd_perubahan'),
+                    ],
                 ],
             ],
             'xaxis' => [
-                'categories' => ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+                'categories' => ['RKPD', 'APBD', 'RKPD Perubahan'],
                 'labels' => [
                     'style' => [
                         'fontFamily' => 'inherit',

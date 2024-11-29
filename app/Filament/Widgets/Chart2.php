@@ -19,7 +19,7 @@ class Chart2 extends ApexChartWidget
      *
      * @var string|null
      */
-    protected static ?string $heading = 'PAGU';
+    protected static ?string $heading = 'Pagu Anggaran ';
 
     /**
      * Chart options (series, labels, types, size, animations...)
@@ -34,8 +34,10 @@ class Chart2 extends ApexChartWidget
                 'type' => 'donut',
                 'height' => 300,
             ],
-            'series' => [ \App\Models\RenjaSubKegiatan::sum('pagu_rkpd'), \App\Models\RenjaSubKegiatan::sum('pagu_apbd'),
-            \App\Models\RenjaSubKegiatan::sum('pagu_rkpd_perubahan')],
+            'series' => [
+            \App\Models\RenjaSubKegiatan::whereTahunAnggaran(2024)->sum('pagu_rkpd'),
+            \App\Models\RenjaSubKegiatan::whereTahunAnggaran(2024)->sum('pagu_apbd'),
+            \App\Models\RenjaSubKegiatan::whereTahunAnggaran(2024)->sum('pagu_rkpd_perubahan')],
             'labels' => ['RKPD', 'APBD', 'RKPD PERUBAHAN',],
             'legend' => [
                 'labels' => [

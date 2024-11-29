@@ -22,4 +22,8 @@ class RenjaProgram extends Model
     public function indikator(){
         return $this->hasMany(RenjaProgramIndikator::class,'renja_program_id','id');
     }
+
+    public function sub_kegiatan(){
+        return $this->hasMany(RenjaSubKegiatan::class,'kode_program','kode_program');
+    }
 }

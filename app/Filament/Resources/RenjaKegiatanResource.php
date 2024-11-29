@@ -20,12 +20,17 @@ class RenjaKegiatanResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
     protected static ?string $navigationLabel = 'Kegiatan';
     protected static ?string $navigationGroup = 'Renja';
+    protected static ?int $navigationSort = 4;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Card::make([
+                    Forms\Components\TextInput::make('kode_kegiatan')->label('Kode Kegiatan')->required(),
+                    Forms\Components\TextInput::make('nama_kegiatan')->label('Nama Kegiatan')->required(),
+                    Forms\Components\Textarea::make('indikator_kegiatan')->label('Indikator Kegiatan')->columnSpan('full')->required(),
+                ])->columns(2)
             ]);
     }
 
@@ -33,19 +38,29 @@ class RenjaKegiatanResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('kode_kegiatan')->searchable(),
-                Tables\Columns\TextColumn::make('nama_kegiatan')->searchable(),
+                Tables\Columns\TextColumn::make('nama_kegiatan')->searchable()->wrap()
+                ->description(fn (RenjaKegiatan $record): string => $record->kode_kegiatan, position: 'above')
+                ,
+                Tables\Columns\TextColumn::make('target_sesudah')->wrap()->label('Target')
+                // ->description(fn (RenjaKegiatan $record): string => 'Sesudah '.$record->target_sesudah, position: 'above')
+                ,
+                Tables\Columns\TextColumn::make('pagu_apbd')->label('Pagu APBD')->wrap()->numeric()
+                // ->description(fn (RenjaKegiatan $record): string => 'RKPD '.number_format($record->pagu_rkpd), position: 'above')
+                ,
+                // Tables\Columns\TextColumn::make('pagu_rkpd_perubahan')->label('Pagu RKPD Perubahan')->wrap()->numeric()
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\ViewAction::make()->label('Lihat'),
+                    Tables\Actions\EditAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    // Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -61,9 +76,9 @@ class RenjaKegiatanResource extends Resource
     {
         return [
             'index' => Pages\ListRenjaKegiatans::route('/'),
-            'create' => Pages\CreateRenjaKegiatan::route('/create'),
-            'view' => Pages\ViewRenjaKegiatan::route('/{record}'),
-            'edit' => Pages\EditRenjaKegiatan::route('/{record}/edit'),
+            // 'create' => Pages\CreateRenjaKegiatan::route('/create'),
+            // 'view' => Pages\ViewRenjaKegiatan::route('/{record}'),
+            // 'edit' => Pages\EditRenjaKegiatan::route('/{record}/edit'),
         ];
     }
 }

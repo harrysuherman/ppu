@@ -20,12 +20,16 @@ class RenjaBidangResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
     protected static ?string $navigationLabel = 'Bidang';
     protected static ?string $navigationGroup = 'Renja';
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Card::make([
+                    Forms\Components\TextInput::make('kode_bidang')->label('Kode Bidang'),
+                    Forms\Components\TextInput::make('nama_bidang')->label('Nama Bidang'),
+                ])->columns(2)
             ]);
     }
 
@@ -40,12 +44,14 @@ class RenjaBidangResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\ViewAction::make()->label('Lihat'),
+                    Tables\Actions\EditAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    // Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -61,9 +67,9 @@ class RenjaBidangResource extends Resource
     {
         return [
             'index' => Pages\ListRenjaBidangs::route('/'),
-            'create' => Pages\CreateRenjaBidang::route('/create'),
-            'view' => Pages\ViewRenjaBidang::route('/{record}'),
-            'edit' => Pages\EditRenjaBidang::route('/{record}/edit'),
+            // 'create' => Pages\CreateRenjaBidang::route('/create'),
+            // 'view' => Pages\ViewRenjaBidang::route('/{record}'),
+            // 'edit' => Pages\EditRenjaBidang::route('/{record}/edit'),
         ];
     }
 }

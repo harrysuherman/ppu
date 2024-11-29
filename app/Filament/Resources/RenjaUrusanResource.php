@@ -20,12 +20,16 @@ class RenjaUrusanResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
     protected static ?string $navigationLabel = 'Urusan';
     protected static ?string $navigationGroup = 'Renja';
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Card::make([
+                    Forms\Components\TextInput::make('kode_urusan')->label('Kode Urusan'),
+                    Forms\Components\TextInput::make('nama_urusan')->label('Nama Urusan'),
+                ])->columns(2)
             ]);
     }
 
@@ -33,18 +37,21 @@ class RenjaUrusanResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('kode_urusan')->searchable(),
+                Tables\Columns\TextColumn::make('nama_urusan')->searchable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\ViewAction::make()->label('Lihat'),
+                    Tables\Actions\EditAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    // Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -60,9 +67,9 @@ class RenjaUrusanResource extends Resource
     {
         return [
             'index' => Pages\ListRenjaUrusans::route('/'),
-            'create' => Pages\CreateRenjaUrusan::route('/create'),
-            'view' => Pages\ViewRenjaUrusan::route('/{record}'),
-            'edit' => Pages\EditRenjaUrusan::route('/{record}/edit'),
+            // 'create' => Pages\CreateRenjaUrusan::route('/create'),
+            // 'view' => Pages\ViewRenjaUrusan::route('/{record}'),
+            // 'edit' => Pages\EditRenjaUrusan::route('/{record}/edit'),
         ];
     }
 }

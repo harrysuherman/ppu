@@ -88,6 +88,18 @@ class RenjaImport implements ToModel, WithStartRow
             $kode_k = $kode_urusan.'.'.$kode_bidang.'.'.$kode_program.'.'.$kode_kegiatan;
             $cek = RenjaKegiatan::whereSkpdId(Auth::user()->satuan_kerja_id)->whereTahunAnggaran(date('Y'))->where('kode_kegiatan',$kode_k)->first();
             // dd($cek);
+            $jml_target_sebelum =  0;
+            $satuan_target_sebelum =  null;
+            $jml_target_sesudah =  0;
+            $satuan_target_sesudah =  null;
+            if ($row[11] != null OR $row['12'] != null) {
+                $target_sebelum =  explode(" ",$row[11]);
+                $target_sesudah =  explode(" ",$row[12]);
+                $jml_target_sebelum =  (int)$target_sebelum[0];
+                $satuan_target_sebelum =  $target_sebelum[1];
+                $jml_target_sesudah =  (int)$target_sesudah[0];
+                $satuan_target_sesudah =  $target_sesudah[1];
+            }
             if (!$cek) {
                 $data =  new RenjaKegiatan([
                     'kode_urusan'     => $kode_u,
@@ -98,6 +110,10 @@ class RenjaImport implements ToModel, WithStartRow
                     'indikator_kegiatan' => $row[7],
                     'target_sebelum' => $row[11],
                     'target_sesudah' => $row[12],
+                    'jml_target_sebelum' => $jml_target_sebelum,
+                    'jml_target_sesudah' => $jml_target_sesudah,
+                    'satuan_target_sebelum' => $satuan_target_sebelum,
+                    'satuan_target_sesudah' => $satuan_target_sesudah,
                     'pagu_rkpd' => str_replace(',00','',str_replace('.','',$row[13])),
                     'pagu_apbd' => str_replace(',00','',str_replace('.','',$row[14])),
                     'pagu_rkpd_perubahan' => str_replace(',00','',str_replace('.','',$row[15])),
@@ -123,6 +139,18 @@ class RenjaImport implements ToModel, WithStartRow
             $kode_sk = $kode_urusan.'.'.$kode_bidang.'.'.$kode_program.'.'.$kode_kegiatan.'.'.$kode_sub_kegiatan;
             $cek = RenjaSubKegiatan::whereSkpdId(Auth::user()->satuan_kerja_id)->whereTahunAnggaran(date('Y'))->where('kode_sub_kegiatan',$kode_sk)->first();
             // dd($cek);
+            $jml_target_sebelum =  0;
+            $satuan_target_sebelum =  null;
+            $jml_target_sesudah =  0;
+            $satuan_target_sesudah =  null;
+            if ($row[11] != null OR $row['12'] != null) {
+                $target_sebelum =  explode(" ",$row[11]);
+                $target_sesudah =  explode(" ",$row[12]);
+                $jml_target_sebelum =  (int)$target_sebelum[0];
+                $satuan_target_sebelum =  $target_sebelum[1];
+                $jml_target_sesudah =  (int)$target_sesudah[0];
+                $satuan_target_sesudah =  $target_sesudah[1];
+            }
             if (!$cek) {
                 $data =  new RenjaSubKegiatan([
                     'kode_urusan'     => $kode_u,
@@ -134,6 +162,10 @@ class RenjaImport implements ToModel, WithStartRow
                     'indikator_sub_kegiatan' => $row[7],
                     'target_sebelum' => $row[11],
                     'target_sesudah' => $row[12],
+                    'jml_target_sebelum' => $jml_target_sebelum,
+                    'jml_target_sesudah' => $jml_target_sesudah,
+                    'satuan_target_sebelum' => $satuan_target_sebelum,
+                    'satuan_target_sesudah' => $satuan_target_sesudah,
                     'pagu_rkpd' => str_replace(',00','',str_replace('.','',$row[13])),
                     'pagu_apbd' => str_replace(',00','',str_replace('.','',$row[14])),
                     'pagu_rkpd_perubahan' => str_replace(',00','',str_replace('.','',$row[15])),

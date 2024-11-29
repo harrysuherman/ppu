@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c06e010566ba35f9c368638eeb4843d",
+    "content-hash": "bec9fd7b106188b689bdbd2abe4ce415",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -2340,6 +2340,165 @@
                 }
             ],
             "time": "2024-04-10T06:31:54+00:00"
+        },
+        {
+            "name": "ibrahim-bougaoua/filaprogress",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ibrahimBougaoua/filaprogress.git",
+                "reference": "5a5595fd52ba1429c22701528dcbbb74d06c37ed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ibrahimBougaoua/filaprogress/zipball/5a5595fd52ba1429c22701528dcbbb74d06c37ed",
+                "reference": "5a5595fd52ba1429c22701528dcbbb74d06c37ed",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^10.0||^11.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.16"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.9",
+                "laravel/pint": "^1.14",
+                "nunomaduro/collision": "^8.1.1||^7.10.0",
+                "orchestra/testbench": "^9.0.0||^8.22.0",
+                "pestphp/pest": "^2.34",
+                "pestphp/pest-plugin-arch": "^2.7",
+                "pestphp/pest-plugin-laravel": "^2.3",
+                "phpstan/extension-installer": "^1.3",
+                "phpstan/phpstan-deprecation-rules": "^1.1",
+                "phpstan/phpstan-phpunit": "^1.3",
+                "spatie/laravel-ray": "^1.35"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "IbrahimBougaoua\\FilaProgress\\FilaProgressServiceProvider"
+                    ],
+                    "aliases": {
+                        "FilaProgress": "IbrahimBougaoua\\FilaProgress\\Facades\\FilaProgress"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "IbrahimBougaoua\\FilaProgress\\": "src/",
+                    "IbrahimBougaoua\\FilaProgress\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ibrahim Bougaoua",
+                    "email": "41789518+ibrahimBougaoua@users.noreply.github.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This is my package filaprogress",
+            "homepage": "https://github.com/ibrahim-bougaoua/filaprogress",
+            "keywords": [
+                "filaprogress",
+                "ibrahimBougaoua",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/ibrahimBougaoua/filaprogress/issues",
+                "source": "https://github.com/ibrahimBougaoua/filaprogress/tree/v0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/IbrahimBougaoua",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-09-03T21:04:55+00:00"
+        },
+        {
+            "name": "ibrahimbougaoua/filasortable",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ibrahimBougaoua/filasortable.git",
+                "reference": "1d0de3253e6a574d0085cb5fe5e69e93baf788cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ibrahimBougaoua/filasortable/zipball/1d0de3253e6a574d0085cb5fe5e69e93baf788cb",
+                "reference": "1d0de3253e6a574d0085cb5fe5e69e93baf788cb",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^3.2",
+                "illuminate/contracts": "^10.0||^11.0",
+                "livewire/livewire": "^3.5",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.16"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.9",
+                "laravel/pint": "^1.14",
+                "nunomaduro/collision": "^8.1.1||^7.10.0",
+                "orchestra/testbench": "^9.0.0||^8.22.0",
+                "pestphp/pest": "^2.34",
+                "pestphp/pest-plugin-arch": "^2.7",
+                "pestphp/pest-plugin-laravel": "^2.3",
+                "phpstan/extension-installer": "^1.3",
+                "phpstan/phpstan-deprecation-rules": "^1.1",
+                "phpstan/phpstan-phpunit": "^1.3",
+                "spatie/laravel-ray": "^1.35"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "IbrahimBougaoua\\FilaSortable\\FilaSortableServiceProvider"
+                    ],
+                    "aliases": {
+                        "FilaSortable": "IbrahimBougaoua\\FilaSortable\\Facades\\FilaSortable"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "IbrahimBougaoua\\FilaSortable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ibrahim Bougaoua",
+                    "email": "41789518+ibrahimBougaoua@users.noreply.github.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This is my package filasortable",
+            "homepage": "https://github.com/ibrahimbougaoua/filasortable",
+            "keywords": [
+                "filasortable",
+                "ibrahimBougaoua",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/ibrahimBougaoua/filasortable/issues",
+                "source": "https://github.com/ibrahimBougaoua/filasortable/tree/v1.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/IbrahimBougaoua",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-09-20T15:39:54+00:00"
         },
         {
             "name": "jaybizzle/crawler-detect",
@@ -4787,6 +4946,94 @@
             "time": "2024-09-24T14:04:43+00:00"
         },
         {
+            "name": "panphp/pan",
+            "version": "v0.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/panphp/pan.git",
+                "reference": "115c70e42a36cc9778dce87b118221d11aadb58a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/panphp/pan/zipball/115c70e42a36cc9778dce87b118221d11aadb58a",
+                "reference": "115c70e42a36cc9778dce87b118221d11aadb58a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.3.0"
+            },
+            "conflict": {
+                "laravel/framework": "<11.0.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.18.1",
+                "orchestra/testbench": "^9.5.2",
+                "pestphp/pest": "^3.5.1",
+                "pestphp/pest-plugin-type-coverage": "^3.1.0",
+                "phpstan/phpstan": "^1.12.7",
+                "rector/rector": "^1.2.8",
+                "symfony/var-dumper": "^7.1.6"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Pan\\Adapters\\Laravel\\Providers\\PanServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pan\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nuno Maduro",
+                    "email": "enunomaduro@gmail.com"
+                },
+                {
+                    "name": "David Hill",
+                    "email": "david@laravel.com"
+                }
+            ],
+            "description": "A simple, lightweight, and privacy-focused product analytics php package.",
+            "keywords": [
+                "analytics",
+                "laravel",
+                "library",
+                "pan",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/panphp/pan/issues",
+                "source": "https://github.com/panphp/pan/tree/v0.1.8"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/paypalme/enunomaduro",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/iamdavidhill",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nunomaduro",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/nunomaduro",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2024-11-02T02:04:52+00:00"
+        },
+        {
             "name": "phpoffice/phpspreadsheet",
             "version": "1.29.4",
             "source": {
@@ -5808,6 +6055,170 @@
                 }
             ],
             "time": "2024-02-26T18:08:49+00:00"
+        },
+        {
+            "name": "schmeits/filament-pan-analytics-widget",
+            "version": "0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmeits/filament-pan-analytics-widget.git",
+                "reference": "79571687ee6064baa64b8e76b0f075bd207ee152"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmeits/filament-pan-analytics-widget/zipball/79571687ee6064baa64b8e76b0f075bd207ee152",
+                "reference": "79571687ee6064baa64b8e76b0f075bd207ee152",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^3.2",
+                "panphp/pan": "^0.1.0",
+                "php": "^8.3",
+                "spatie/laravel-package-tools": "^1.15.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^v8.4.0",
+                "nunomaduro/larastan": "^2.0.1",
+                "orchestra/testbench": "^v9.0",
+                "pestphp/pest": "^3.0",
+                "pestphp/pest-plugin-arch": "^3.0",
+                "pestphp/pest-plugin-laravel": "^3.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "spatie/laravel-ray": "^1.26"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Schmeits\\FilamentPanAnalyticsWidget\\FilamentPanAnalyticsWidgetServiceProvider"
+                    ],
+                    "aliases": {
+                        "FilamentPanAnalyticsWidget": "Schmeits\\FilamentPanAnalyticsWidget\\Facades\\FilamentPanAnalyticsWidget"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Schmeits\\FilamentPanAnalyticsWidget\\": "src/",
+                    "Schmeits\\FilamentPanAnalyticsWidget\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tally Schmeits",
+                    "email": "tally@schmeits.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A widget for pan (lightweight and privacy-focused PHP product analytics library)",
+            "homepage": "https://github.com/schmeits/filament-pan-analytics-widget",
+            "keywords": [
+                "filament-pan-analytics-widget",
+                "laravel",
+                "schmeits"
+            ],
+            "support": {
+                "issues": "https://github.com/schmeits/filament-pan-analytics-widget/issues",
+                "source": "https://github.com/schmeits/filament-pan-analytics-widget"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/schmeits",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-10-18T09:10:23+00:00"
+        },
+        {
+            "name": "solution-forest/filament-panphp",
+            "version": "0.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/solutionforest/filament-panphp.git",
+                "reference": "6e5d3ef896a494dd38b650820b34cd4f29b4cbc3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/solutionforest/filament-panphp/zipball/6e5d3ef896a494dd38b650820b34cd4f29b4cbc3",
+                "reference": "6e5d3ef896a494dd38b650820b34cd4f29b4cbc3",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^3.2.119",
+                "panphp/pan": "^0.1.3",
+                "php": "^8.3",
+                "spatie/laravel-package-tools": "^1.15.0"
+            },
+            "conflict": {
+                "laravel/framework": "<11.0.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.18.1",
+                "nunomaduro/collision": "^8.1",
+                "nunomaduro/larastan": "^2.0.1",
+                "orchestra/testbench": "^9.2",
+                "pestphp/pest": "^3.4.1",
+                "pestphp/pest-plugin-arch": "^3.0",
+                "pestphp/pest-plugin-laravel": "^3.0",
+                "pestphp/pest-plugin-type-coverage": "^3.1.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "spatie/laravel-ray": "^1.26"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "SolutionForest\\FilamentPanphp\\FilamentPanphpServiceProvider"
+                    ],
+                    "aliases": {
+                        "FilamentPanphp": "SolutionForest\\FilamentPanphp\\Facades\\FilamentPanphp"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SolutionForest\\FilamentPanphp\\": "src/",
+                    "SolutionForest\\FilamentPanphp\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "alan",
+                    "email": "info+package@solutionforest.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This is my package filament-panphp",
+            "homepage": "https://github.com/solutionforest/filament-panphp",
+            "keywords": [
+                "filament-panphp",
+                "laravel",
+                "solution-forest"
+            ],
+            "support": {
+                "issues": "https://github.com/solutionforest/filament-panphp/issues",
+                "source": "https://github.com/solutionforest/filament-panphp"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/solution-forest",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-10-18T01:41:21+00:00"
         },
         {
             "name": "spatie/color",
@@ -10978,12 +11389,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }
