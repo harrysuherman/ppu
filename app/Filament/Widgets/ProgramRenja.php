@@ -10,7 +10,10 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use IbrahimBougaoua\FilaProgress\Tables\Columns\CircleProgress;
 use IbrahimBougaoua\FilaProgress\Tables\Columns\ProgressBar;
-
+use DB;
+use Auth;
+use App\Models\Scopes\RenjaProgram as Scope;
+use Filament\Tables\Filters\SelectFilter;
 
 class ProgramRenja extends BaseWidget
 {
@@ -19,10 +22,24 @@ class ProgramRenja extends BaseWidget
 
     public function table(Table $table): Table
     {
+        if (Auth::user()->hasRole(['super_admin'])) {
+            $query = RenjaProgram::query()->withoutGlobalScope(Scope::class)->whereTahunAnggaran(session('tahun_anggaran'));
+        }
+        else if (Auth::user()->hasRole(['satker'])) {
+            $query = RenjaProgram::query();
+        }
+        else{
+
+        }
+
         return $table
             ->query(
-                RenjaProgram::query()
+                $query
             )
+            ->filters([
+                SelectFilter::make('skpd_id')->label('Satuan Kerja')
+                ->options(\App\Models\SatuanKerja::all()->pluck('nama_satker','id'))->hidden(fn()=> auth()->user()->hasRole(['satker']))
+            ])
             ->columns([
                 TextColumn::make('nama_program')->wrap(),
                 // TextColumn::make('pagu_rkpd')->label('RKPD')->numeric()->wrap(),

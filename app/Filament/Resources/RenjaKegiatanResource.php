@@ -48,9 +48,9 @@ class RenjaKegiatanResource extends Resource
                 // ->description(fn (RenjaKegiatan $record): string => 'RKPD '.number_format($record->pagu_rkpd), position: 'above')
                 ,
                 // Tables\Columns\TextColumn::make('pagu_rkpd_perubahan')->label('Pagu RKPD Perubahan')->wrap()->numeric()
+                // Tables\Columns\TextColumn::make('satuan_kerja_bidang')->label('Bidang')->wrap()
             ])
             ->filters([
-                //
             ])
             ->actions([
                 Tables\Actions\ActionGroup::make([
@@ -80,5 +80,11 @@ class RenjaKegiatanResource extends Resource
             // 'view' => Pages\ViewRenjaKegiatan::route('/{record}'),
             // 'edit' => Pages\EditRenjaKegiatan::route('/{record}/edit'),
         ];
+    }
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['satuan_kerja_id'] = 1;
+        return $data;
     }
 }

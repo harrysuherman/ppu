@@ -9,12 +9,12 @@ use App\Imports\RenjaImport;
 use Filament\Support\Enums\MaxWidth;
 use App\Filament\Widgets\RenjaWidget;
 
-class Renja extends Page
+class ImportRenja extends Page
 {
     protected static ?string $navigationIcon = 'heroicon-o-table-cells';
     protected static ?string $navigationLabel = 'Import Renja';
 
-    protected static string $view = 'filament.pages.renja';
+    protected static string $view = 'filament.pages.import-renja';
 
     public function getMaxContentWidth(): MaxWidth
     {
@@ -23,7 +23,7 @@ class Renja extends Page
 
     public static function canAccess(): bool
     {
-        return auth()->user()->can('page_Renja');
+        return auth()->user()->can('page_ImportRenja');
     }
 
     protected function getHeaderWidgets(): array

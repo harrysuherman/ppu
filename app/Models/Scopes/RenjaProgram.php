@@ -16,10 +16,10 @@ class RenjaProgram implements Scope
     {
         if (Auth::check()) {
            if (Auth::user()->hasRole(['satker'])) {
-             $builder->where('skpd_id', Auth::user()->satuan_kerja_id);
+             $builder->where('skpd_id', Auth::user()->satuan_kerja_id)->whereTahunAnggaran(session('tahun_anggaran'));
            }
-           else{
-
+           else if (Auth::user()->hasRole(['super_admin'])){
+             $builder->whereTahunAnggaran(session('tahun_anggaran'))->whereSkpdId(session('filter_skpd'));
            }
         }
     }

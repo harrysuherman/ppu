@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Scopes\RenjaSubKegiatan as Scope;
 
 class RenjaSubKegiatan extends Model
 {
@@ -19,6 +20,7 @@ class RenjaSubKegiatan extends Model
                 'jml_target_rpd_2024_2026',
                 'satuan_target_rpd_2024_2026',
                 'nilai_target_rpd_2024_2026',
+                'nilai_target'
             ];
 
     public function realisasi(){
@@ -29,5 +31,16 @@ class RenjaSubKegiatan extends Model
         return $this->belongsTo(RenjaKegiatan::class,'kode_kegiatan','kode_kegiatan')->withDefault([
             'nama_kegiatan'=> ''
         ]);
+    }
+
+    public function skpd(){
+        return $this->belongsTo(SatuanKerja::class,'skpd_id','id')->withDefault([
+            'nama_satker'=> ''
+        ]);
+    }
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new Scope);
     }
 }

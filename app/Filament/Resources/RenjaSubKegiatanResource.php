@@ -17,6 +17,12 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Actions\StaticAction;
 use Auth;
 use Filament\Tables\Grouping\Group;
+use Filament\Support\Enums\FontWeight;
+use Filament\Tables\Columns\Layout\Panel;
+use Filament\Tables\Columns\Layout\Split;
+use Filament\Tables\Columns\Layout\Stack;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 
 class RenjaSubKegiatanResource extends Resource
 {
@@ -35,11 +41,11 @@ class RenjaSubKegiatanResource extends Resource
                     Forms\Components\TextInput::make('kode_sub_kegiatan')->label('Kode Sub Kegiatan')->required(),
                     Forms\Components\TextInput::make('nama_sub_kegiatan')->label('Nama Sub Kegiatan')->required(),
                     Forms\Components\Textarea::make('indikator_sub_kegiatan')->label('Indikator Sub Kegiatan')->columnSpan('full')->required(),
-                    Forms\Components\Fieldset::make('Target Sebelum')
-                    ->schema([
-                        Forms\Components\TextInput::make('jml_target_sebelum')->label('Jumlah')->required(),
-                        Forms\Components\TextInput::make('satuan_target_sebelum')->label('Satuan')->required(),
-                    ]),
+                    // Forms\Components\Fieldset::make('Target Sebelum')
+                    // ->schema([
+                    //     Forms\Components\TextInput::make('jml_target_sebelum')->label('Jumlah')->required(),
+                    //     Forms\Components\TextInput::make('satuan_target_sebelum')->label('Satuan')->required(),
+                    // ]),
                     Forms\Components\Fieldset::make('Target Sesudah')
                     ->schema([
                         Forms\Components\TextInput::make('jml_target_sesudah')->label('Jumlah')->required(),
@@ -57,21 +63,27 @@ class RenjaSubKegiatanResource extends Resource
                     ->getDescriptionFromRecordUsing(fn (RenjaSubKegiatan $record): string => $record->kegiatan->kode_kegiatan),
             ])
             ->columns([
-                Tables\Columns\TextColumn::make('nama_sub_kegiatan')->searchable()->wrap()
-                ->description(fn (RenjaSubKegiatan $record): string => $record->kode_sub_kegiatan, position: 'above'),
-                Tables\Columns\TextColumn::make('indikator_sub_kegiatan')->wrap(),
-                Tables\Columns\TextColumn::make('jml_target_sesudah')->label('Target')
-                ->wrap()
-                ->description(fn (RenjaSubKegiatan $record): string => $record->satuan_target_sesudah, position: 'above')
-                ,
-                Tables\Columns\TextColumn::make('pagu_apbd')->label('APBD')->wrap()->numeric()
-                ->description(fn (RenjaSubKegiatan $record): string => 'RKPD '.number_format($record->pagu_rkpd), position: 'above')
-                ,
-                Tables\Columns\TextColumn::make('pagu_rkpd_perubahan')->label('RKPD Perubahan')->wrap()->numeric(),
+                Split::make([
+                    Tables\Columns\TextColumn::make('nama_sub_kegiatan')->searchable()->wrap()
+                    ->description(fn (RenjaSubKegiatan $record): string => 'Sub Kegiatan '.$record->kode_sub_kegiatan, position: 'above'),
+                    Tables\Columns\TextColumn::make('indikator_sub_kegiatan')->description('Indikator', position: 'above')->wrap(),
+                    Tables\Columns\TextColumn::make('jml_target_sesudah')->label('Target')
+                    ->formatStateUsing(fn (string $state,$record): string => __("{$state} ").$record->satuan_target_sesudah)
+                    ->description('Target', position: 'above')
+                    ->wrap(),
+                    // Tables\Columns\TextColumn::make('pagu_rkpd')->description('RKPD (Rp)', position: 'above')->label('RKPD')->wrap()->numeric(),
+                    Tables\Columns\TextColumn::make('pagu_apbd')->description('APBD (Rp.)', position: 'above')->label('APBD')->wrap()->numeric(),
+                    // Tables\Columns\TextColumn::make('pagu_rkpd_perubahan')->description('RKPD Perubahan (Rp.)', position: 'above')->label('APBD')->wrap()->numeric(),
+                ]),
+                Panel::make([
+                    Split::make([
+                        TextColumn::make('jml_target_rpd_2024_2026')->icon('heroicon-m-document')->description('Target RPD 2024-2026', position: 'above')
+                        ->formatStateUsing(fn (string $state,$record): string => __("{$state} ").$record->satuan_target_rpd_2024_2026.' Rp.'.number_format($record->nilai_target_rpd_2024_2026))
+                        ,
+                    ]),
+                ])->collapsible()
             ])
             ->filters([
-                \Filament\Tables\Filters\SelectFilter::make('kode_bidang')->label('Bidang')
-                ->options(RenjaBidang::all()->pluck('nama_bidang','kode_bidang')),
                 \Filament\Tables\Filters\SelectFilter::make('kode_program')->label('Program')
                     ->options(RenjaProgram::all()->pluck('nama_program','kode_program'))
             ])
@@ -116,10 +128,11 @@ class RenjaSubKegiatanResource extends Resource
                     'indikator_sub_kegiatan' => $record->indikator_sub_kegiatan,
                     'target_sebelum' => $record->target_sebelum,
                     'target_sesudah' => $record->target_sesudah,
-                    'jml_target_sebelum' => $record->jml_target_sebelum,
+                    // 'jml_target_sebelum' => $record->jml_target_sebelum,
                     'jml_target_sesudah' => $record->jml_target_sesudah,
-                    'satuan_target_sebelum' => $record->satuan_target_sebelum,
+                    // 'satuan_target_sebelum' => $record->satuan_target_sebelum,
                     'satuan_target_sesudah' => $record->satuan_target_sesudah,
+                    'nilai_target' => $record->nilai_target,
                     'jml_realisasi_tw1' => $record->jml_realisasi_tw1,
                     'nilai_realisasi_tw1' => $record->nilai_realisasi_tw1,
                     'jml_realisasi_tw2' => $record->jml_realisasi_tw2,
@@ -138,16 +151,17 @@ class RenjaSubKegiatanResource extends Resource
                         Forms\Components\TextInput::make('pagu_rkpd')->disabled()->numeric()->label('Pagu RKPD'),
                         Forms\Components\TextInput::make('pagu_apbd')->disabled()->numeric()->label('Pagu APBD'),
                         Forms\Components\TextInput::make('pagu_rkpd_perubahan')->disabled()->numeric()->label('Pagu RKPD Perubahan'),
-                        Forms\Components\Fieldset::make('Target Sebelum')
-                        ->schema([
-                            Forms\Components\TextInput::make('jml_target_sebelum')->disabled()->label('Jumlah')->required(),
-                            Forms\Components\TextInput::make('satuan_target_sebelum')->disabled()->label('Satuan')->required(),
-                        ]),
-                        Forms\Components\Fieldset::make('Target Sesudah')
+                        // Forms\Components\Fieldset::make('Target Sebelum')
+                        // ->schema([
+                        //     Forms\Components\TextInput::make('jml_target_sebelum')->disabled()->label('Jumlah')->required(),
+                        //     Forms\Components\TextInput::make('satuan_target_sebelum')->disabled()->label('Satuan')->required(),
+                        // ]),
+                        Forms\Components\Fieldset::make('Target')
                         ->schema([
                             Forms\Components\TextInput::make('jml_target_sesudah')->disabled()->label('Jumlah')->required(),
                             Forms\Components\TextInput::make('satuan_target_sesudah')->disabled()->label('Satuan')->required(),
-                        ]),
+                            Forms\Components\TextInput::make('nilai_target')->label('Nilai Target (Rp.)')->required()->numeric(),
+                        ])->columns(3),
                         Forms\Components\Fieldset::make('Realisasi')
                         ->schema([
                             Forms\Components\TextInput::make('jml_realisasi_tw1')->required()->numeric()->label('Jumlah Realisasi Triwulan I'),
@@ -192,12 +206,13 @@ class RenjaSubKegiatanResource extends Resource
                     $record->nilai_realisasi_tw2 = $data['nilai_realisasi_tw2'];
                     $record->nilai_realisasi_tw3 = $data['nilai_realisasi_tw3'];
                     $record->nilai_realisasi_tw4 = $data['nilai_realisasi_tw4'];
+                    $record->nilai_target = $data['nilai_target'];
                     $record->save();
                 })
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    // Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

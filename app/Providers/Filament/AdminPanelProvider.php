@@ -29,6 +29,7 @@ use Filament\Enums\ThemeMode;
 use Filament\Support\Enums\MaxWidth;
 use IbrahimBougaoua\FilaSortable\FilaSortablePlugin;
 use SolutionForest\FilamentPanphp\Components\PanOverview;
+use Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -41,7 +42,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
+            ->login(\App\Filament\Pages\EditLogin::class)
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -102,7 +103,8 @@ class AdminPanelProvider extends PanelProvider
                 ]),
                 FilamentApexChartsPlugin::make(),
                 FilamentBackgroundsPlugin::make(),
-                FilaSortablePlugin::make()
+                FilaSortablePlugin::make(),
+                FilamentProgressbarPlugin::make()->color('#29b')
             ])
             ->navigationGroups([
                 NavigationGroup::make()

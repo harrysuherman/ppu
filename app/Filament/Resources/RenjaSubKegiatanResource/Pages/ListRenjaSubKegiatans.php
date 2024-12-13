@@ -20,7 +20,9 @@ class ListRenjaSubKegiatans extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make()->label('Tambah'),
+            Actions\Action::make('refresh')->label('Refresh Data')->icon('heroicon-o-arrow-path')->color('success')
+            ->url(route('filament.admin.resources.renja-sub-kegiatans.index')),
+            Actions\CreateAction::make()->label('Tambah')->icon('heroicon-o-plus-circle'),
         ];
     }
 }

@@ -31,8 +31,8 @@ class RenjaProgramResource extends Resource
                     Forms\Components\TextInput::make('kode_program')->label('Kode Program')->required(),
                     Forms\Components\TextInput::make('nama_program')->label('Nama Program')->required(),
                     Forms\Components\Textarea::make('indikator_program')->label('Indikator Program')->columnSpan('full'),
-                    Forms\Components\Textarea::make('target_sebelum')->label('Target Sebelum'),
-                    Forms\Components\Textarea::make('target_sesudah')->label('Target Sesudah'),
+                    Forms\Components\Textarea::make('target_sebelum')->label('Referensi Target Sebelum'),
+                    Forms\Components\Textarea::make('target_sesudah')->label('Referensi Target Sesudah'),
                     Forms\Components\Textarea::make('pagu_rkpd')->label('Pagu RKPD')->required(),
                     Forms\Components\Textarea::make('pagu_apbd')->required()->label('Pagu APBD'),
                     Forms\Components\Textarea::make('pagu_rkpd_perubahan')->required()->label('Pagu RKPD Perubahan'),
@@ -79,9 +79,9 @@ class RenjaProgramResource extends Resource
                 ])
                 ->form([
                     Forms\Components\Card::make([
-                        Forms\Components\Textarea::make('indikator_program')->required()->columnSpan('full'),
-                        Forms\Components\TextInput::make('target_sebelum')->required(),
-                        Forms\Components\TextInput::make('target_sesudah')->required(),
+                        Forms\Components\Textarea::make('indikator_program')->required(),
+                        // Forms\Components\TextInput::make('target_sebelum')->label('Referensi Tagret')->required(),
+                        Forms\Components\TextInput::make('target_sesudah')->label('Referensi Target')->required(),
                     ])->columns(2),
                     Forms\Components\Repeater::make('indikator')->label('Indikator Program')->addActionLabel('Tambah Indikator')
                     ->relationship()

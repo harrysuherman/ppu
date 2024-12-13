@@ -14,19 +14,43 @@ use IbrahimBougaoua\FilaProgress\Infolists\Components\CircleProgressEntry;
 use IbrahimBougaoua\FilaProgress\Infolists\Components\ProgressBarEntry;
 use IbrahimBougaoua\FilaProgress\Tables\Columns\CircleProgress;
 use IbrahimBougaoua\FilaProgress\Tables\Columns\ProgressBar;
+use DB;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Actions\Action;
+use Illuminate\Support\Str;
 
-class RealisasiKegiatanTable extends BaseWidget
+class RealisasiKegiatanTableAdmin extends BaseWidget
 {
     protected static ?int $sort = 2;
     protected int | string | array $columnSpan = 'full';
 
+    public $satuan_kerja_id = 6;
+
+    protected $listeners = [
+        'updateSatkerRealisasiKegiatanTableAdmin'=> 'updateData'
+    ];
+
+    public function updated($name, $value): void
+    {
+        if (Str::of($name)->contains('tableFilters')) {
+            $this->dispatch('updateSatkerRealisasiKegiatanStatsOverviewAdmin', satuan_kerja_id: $value);
+            // dd($value);
+        }
+    }
+
+    public function updateData($satuan_kerja_id){
+        // dd($satuan_kerja_id);
+        $this->satuan_kerja_id = $satuan_kerja_id;
+    }
+
     public function table(Table $table): Table
     {
         return $table
+            ->emptyStateHeading('Tidak ada data!')
             ->query(
-                RenjaSubKegiatan::query()
+                RenjaSubKegiatan::query()->withoutGlobalScope(RenjaSubKegiatan::class)->where('skpd_id',session('filter_skpd'))
             )
-            ->paginated(['all'])
+            ->paginated([5,15,25,50,100])
             ->groups([
                 Group::make('kegiatan.nama_kegiatan')->collapsible()
                     ->getDescriptionFromRecordUsing(fn (RenjaSubKegiatan $record): string => $record->kegiatan->kode_kegiatan)
@@ -42,19 +66,6 @@ class RealisasiKegiatanTable extends BaseWidget
                 ->wrap(),
                 Tables\Columns\TextColumn::make('pagu_apbd')->label('APBD')->wrap()->numeric()
                 ,
-                // Tables\Columns\TextColumn::make('pagu_rkpd_perubahan')->label('RKPD Perubahan')->wrap()->numeric(),
-                // Tables\Columns\TextColumn::make('jml_realisasi_tw1')->label('TW I')
-                // ->description(fn (RenjaSubKegiatan $record): string => 'Rp. '.number_format($record->nilai_realisasi_tw1), position: 'above')
-                // ,
-                // Tables\Columns\TextColumn::make('jml_realisasi_tw2')->label('TW II')
-                // ->description(fn (RenjaSubKegiatan $record): string => 'Rp. '.number_format($record->nilai_realisasi_tw2), position: 'above')
-                // ,
-                // Tables\Columns\TextColumn::make('jml_realisasi_tw3')->label('TW III')
-                // ->description(fn (RenjaSubKegiatan $record): string => 'Rp '.number_format($record->nilai_realisasi_tw3), position: 'above')
-                // ,
-                // Tables\Columns\TextColumn::make('jml_realisasi_tw4')->label('TW IV')
-                // ->description(fn (RenjaSubKegiatan $record): string => 'Rp '.number_format($record->nilai_realisasi_tw4), position: 'above')
-                // ,
                 CircleProgress::make('jml_tw_1')->label('K (TW I)')
                 ->getStateUsing(function ($record) {
                     return [
@@ -123,6 +134,12 @@ class RealisasiKegiatanTable extends BaseWidget
                 \Filament\Tables\Filters\SelectFilter::make('kode_program')->label('Program')
                     ->options(RenjaProgram::all()->pluck('nama_program','kode_program'))
             ])
+            ->filtersTriggerAction(
+                fn (Action $action) => $action
+                    ->button()
+                    ->label('Filter'),
+            )
+            ->deselectAllRecordsWhenFiltered(false)
             ;
     }
 }

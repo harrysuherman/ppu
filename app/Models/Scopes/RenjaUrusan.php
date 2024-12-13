@@ -18,9 +18,9 @@ class RenjaUrusan implements Scope
            if (Auth::user()->hasRole(['satker'])) {
              $builder->where('skpd_id', Auth::user()->satuan_kerja_id);
            }
-           else{
-
-           }
+           else if (Auth::user()->hasRole(['super_admin'])){
+            $builder->whereTahunAnggaran(session('tahun_anggaran'))->whereSkpdId(session('filter_skpd'));
+          }
         }
     }
 }

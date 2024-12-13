@@ -17,4 +17,10 @@ class ListRenjaKegiatans extends ListRecords
             Actions\CreateAction::make()->label('Tambah')->icon('heroicon-o-plus-circle'),
         ];
     }
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['satuan_kerja_id'] = 1;
+        return $data;
+    }
 }

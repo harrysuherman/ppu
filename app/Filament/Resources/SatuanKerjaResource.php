@@ -26,9 +26,8 @@ class SatuanKerjaResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Card::make([
-                    Forms\Components\TextInput::make('kode_satker')->label('Kode Satuan Kerja'),
                     Forms\Components\TextInput::make('nama_satker')->label('Nama Satuan Kerja'),
-                ])->columns(2)
+                ])
             ]);
     }
 
@@ -36,7 +35,6 @@ class SatuanKerjaResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('kode_satker')->label('Kode'),
                 Tables\Columns\TextColumn::make('nama_satker')->label('Nama')->searchable()
             ])
             ->filters([
@@ -44,7 +42,7 @@ class SatuanKerjaResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                // Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 // Tables\Actions\BulkActionGroup::make([
