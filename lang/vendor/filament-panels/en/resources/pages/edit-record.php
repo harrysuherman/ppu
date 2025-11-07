@@ -11,11 +11,11 @@ return [
         'actions' => [
 
             'cancel' => [
-                'label' => 'Cancel',
+                'label' => 'Batal',
             ],
 
             'save' => [
-                'label' => 'Save changes',
+                'label' => 'Simpan Perubahan',
             ],
 
         ],

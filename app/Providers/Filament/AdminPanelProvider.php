@@ -25,6 +25,7 @@ use Auth;
 use Joaopaulolndev\FilamentEditProfile\Pages\EditProfilePage;
 use Leandrocfe\FilamentApexCharts\FilamentApexChartsPlugin;
 use Swis\Filament\Backgrounds\FilamentBackgroundsPlugin;
+use Swis\Filament\Backgrounds\ImageProviders\MyImages;
 use Filament\Enums\ThemeMode;
 use Filament\Support\Enums\MaxWidth;
 use IbrahimBougaoua\FilaSortable\FilaSortablePlugin;
@@ -39,6 +40,7 @@ class AdminPanelProvider extends PanelProvider
             ->maxContentWidth(MaxWidth::Full)
             ->brandName('APLIKASI EVALUASI PEMBANGUNAN PEMDA')
             ->brandLogo(fn () => view('filament.admin.logo'))
+            ->darkModeBrandLogo(fn () => view('filament.admin.logo-dark'))
             ->default()
             ->id('admin')
             ->path('admin')
@@ -64,7 +66,7 @@ class AdminPanelProvider extends PanelProvider
             ->navigationGroups([
                 NavigationGroup::make()
                      ->label('Renja')
-                     ->icon('heroicon-o-chart-bar-square')
+                     ->icon('heroicon-o-document-text')
                     ,
                 NavigationGroup::make()
                     ->label('Laporan')
@@ -72,7 +74,7 @@ class AdminPanelProvider extends PanelProvider
                     ,
                 NavigationGroup::make()
                     ->label('Data Master')
-                    ->icon('heroicon-o-table-cells')
+                    // ->icon('heroicon-o-table-cells')
                     ->collapsed()
                     ,
                 NavigationGroup::make()
@@ -102,17 +104,31 @@ class AdminPanelProvider extends PanelProvider
                     // \App\Livewire\CustomProfileComponent::class,
                 ]),
                 FilamentApexChartsPlugin::make(),
-                FilamentBackgroundsPlugin::make(),
+                FilamentBackgroundsPlugin::make()
+                ->showAttribution(false)
+                ->imageProvider(
+                    MyImages::make()
+                        ->directory('backgrounds')
+                )
+                ,
                 FilaSortablePlugin::make(),
                 FilamentProgressbarPlugin::make()->color('#29b')
             ])
             ->navigationGroups([
                 NavigationGroup::make()
-                     ->label('SIPD')
+                     ->label('RENJA')
                      ->icon('heroicon-o-document-text')
                     ,
                 NavigationGroup::make()
-                    ->label('Settings')
+                     ->label('RENSTRA')
+                     ->icon('heroicon-o-document-text')
+                    ,
+                NavigationGroup::make()
+                     ->label('LAPORAN')
+                     ->icon('heroicon-o-document-text')
+                    ,
+                NavigationGroup::make()
+                    ->label('SETTING')
                     ->icon('heroicon-o-cog-6-tooth')
                     ->collapsed()
                     ,

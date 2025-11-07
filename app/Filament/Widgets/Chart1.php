@@ -48,6 +48,10 @@ class Chart1 extends ApexChartWidget
             $pagu_rkpd_2024 = DB::table('renja_sub_kegiatan')->whereTahunAnggaran(2024)->sum('pagu_rkpd')/1000000000;
             $pagu_apbd_2024 = DB::table('renja_sub_kegiatan')->whereTahunAnggaran(2024)->sum('pagu_apbd')/1000000000;
             $pagu_rkpd_perubahan_2024 = DB::table('renja_sub_kegiatan')->whereTahunAnggaran(2024)->sum('pagu_rkpd_perubahan')/1000000000;
+
+            $pagu_rkpd_2025 = DB::table('renja_sub_kegiatan')->whereTahunAnggaran(2025)->sum('pagu_rkpd')/1000000000;
+            $pagu_apbd_2025 = DB::table('renja_sub_kegiatan')->whereTahunAnggaran(2025)->sum('pagu_apbd')/1000000000;
+            $pagu_rkpd_perubahan_2025 = DB::table('renja_sub_kegiatan')->whereTahunAnggaran(2025)->sum('pagu_rkpd_perubahan')/1000000000;
         }
         else if (Auth::user()->hasRole(['satker'])) {
             $pagu_rkpd_2021 = DB::table('renja_sub_kegiatan')->whereSkpdId(Auth::user()->satuan_kerja_id)->whereTahunAnggaran(2021)->sum('pagu_rkpd')/1000000000;
@@ -65,6 +69,10 @@ class Chart1 extends ApexChartWidget
             $pagu_rkpd_2024 = DB::table('renja_sub_kegiatan')->whereSkpdId(Auth::user()->satuan_kerja_id)->whereTahunAnggaran(2024)->sum('pagu_rkpd')/1000000000;
             $pagu_apbd_2024 = DB::table('renja_sub_kegiatan')->whereSkpdId(Auth::user()->satuan_kerja_id)->whereTahunAnggaran(2024)->sum('pagu_apbd')/1000000000;
             $pagu_rkpd_perubahan_2024 = DB::table('renja_sub_kegiatan')->whereSkpdId(Auth::user()->satuan_kerja_id)->whereTahunAnggaran(2024)->sum('pagu_rkpd_perubahan')/1000000000;
+
+            $pagu_rkpd_2025 = DB::table('renja_sub_kegiatan')->whereSkpdId(Auth::user()->satuan_kerja_id)->whereTahunAnggaran(2025)->sum('pagu_rkpd')/1000000000;
+            $pagu_apbd_2025 = DB::table('renja_sub_kegiatan')->whereSkpdId(Auth::user()->satuan_kerja_id)->whereTahunAnggaran(2025)->sum('pagu_apbd')/1000000000;
+            $pagu_rkpd_perubahan_2025 = DB::table('renja_sub_kegiatan')->whereSkpdId(Auth::user()->satuan_kerja_id)->whereTahunAnggaran(2025)->sum('pagu_rkpd_perubahan')/1000000000;
         }
 
         return [
@@ -104,6 +112,14 @@ class Chart1 extends ApexChartWidget
                         round($pagu_rkpd_2024,2),
                         round( $pagu_apbd_2024,2),
                         round($pagu_rkpd_perubahan_2024,2),
+                    ],
+                ],
+                [
+                    'name' => '2025',
+                    'data' => [
+                        round($pagu_rkpd_2025,2),
+                        round( $pagu_apbd_2025,2),
+                        round($pagu_rkpd_perubahan_2025,2),
                     ],
                 ],
             ],

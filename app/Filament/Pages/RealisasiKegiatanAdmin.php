@@ -11,9 +11,9 @@ use App\Models\SatuanKerja;
 
 class RealisasiKegiatanAdmin extends Page
 {
-    protected static ?string $navigationIcon = 'heroicon-o-banknotes';
+    // protected static ?string $navigationIcon = 'heroicon-o-banknotes';
     protected static ?string $navigationLabel = 'Realisasi Kegiatan';
-    protected static ?string $navigationGroup = 'Laporan';
+    protected static ?string $navigationGroup = 'LAPORAN';
     protected static ?int $navigationSort = 1;
 
     public $satuan_kerja_id;

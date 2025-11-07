@@ -18,4 +18,9 @@ class RenjaUrusan extends Model
         static::addGlobalScope(new Scope);
     }
 
+    public function skpd()
+    {
+        return $this->belongsTo(SatuanKerja::class, 'skpd_id', 'id')->withDefault(['nama_satker' => '']);
+    }
+
 }

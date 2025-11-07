@@ -4,16 +4,16 @@ return [
 
     'single' => [
 
-        'label' => 'Delete',
+        'label' => 'Hapus',
 
         'modal' => [
 
-            'heading' => 'Delete :label',
+            'heading' => 'Hapus :label',
 
             'actions' => [
 
                 'delete' => [
-                    'label' => 'Delete',
+                    'label' => 'Hapus',
                 ],
 
             ],
@@ -23,7 +23,7 @@ return [
         'notifications' => [
 
             'deleted' => [
-                'title' => 'Deleted',
+                'title' => 'Terhapus',
             ],
 
         ],
@@ -32,16 +32,16 @@ return [
 
     'multiple' => [
 
-        'label' => 'Delete selected',
+        'label' => 'Hapus terpilih',
 
         'modal' => [
 
-            'heading' => 'Delete selected :label',
+            'heading' => 'Hapus terpilih :label',
 
             'actions' => [
 
                 'delete' => [
-                    'label' => 'Delete',
+                    'label' => 'Hapus',
                 ],
 
             ],
@@ -51,7 +51,7 @@ return [
         'notifications' => [
 
             'deleted' => [
-                'title' => 'Deleted',
+                'title' => 'Berhasil dihapus',
             ],
 
         ],

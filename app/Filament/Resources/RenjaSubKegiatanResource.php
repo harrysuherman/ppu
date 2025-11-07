@@ -23,14 +23,15 @@ use Filament\Tables\Columns\Layout\Split;
 use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Carbon\Carbon;
 
 class RenjaSubKegiatanResource extends Resource
 {
     protected static ?string $model = RenjaSubKegiatan::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
+    // protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
     protected static ?string $navigationLabel = 'Sub Kegiatan';
-    protected static ?string $navigationGroup = 'Renja';
+    protected static ?string $navigationGroup = 'RENJA';
     protected static ?int $navigationSort = 5;
 
     public static function form(Form $form): Form
@@ -164,14 +165,106 @@ class RenjaSubKegiatanResource extends Resource
                         ])->columns(3),
                         Forms\Components\Fieldset::make('Realisasi')
                         ->schema([
-                            Forms\Components\TextInput::make('jml_realisasi_tw1')->required()->numeric()->label('Jumlah Realisasi Triwulan I'),
-                            Forms\Components\TextInput::make('nilai_realisasi_tw1')->required()->numeric()->label('Nilai Realisasi Triwulan I (Rp).'),
-                            Forms\Components\TextInput::make('jml_realisasi_tw2')->required()->numeric()->label('Jumlah Realisasi Triwulan II'),
-                            Forms\Components\TextInput::make('nilai_realisasi_tw2')->required()->numeric()->label('Nilai Realisasi Triwulan II (Rp).'),
-                            Forms\Components\TextInput::make('jml_realisasi_tw3')->required()->numeric()->label('Jumlah Realisasi Triwulan III'),
-                            Forms\Components\TextInput::make('nilai_realisasi_tw3')->required()->numeric()->label('Nilai Realisasi Triwulan III (Rp).'),
-                            Forms\Components\TextInput::make('jml_realisasi_tw4')->required()->numeric()->label('Jumlah Realisasi Triwulan IV'),
-                            Forms\Components\TextInput::make('nilai_realisasi_tw4')->required()->numeric()->label('Nilai Realisasi Triwulan IV (Rp).'),
+                            // triwulan I
+                            Forms\Components\TextInput::make('jml_realisasi_tw1')->required()->numeric()->label('Jumlah Realisasi Triwulan I')
+                            ->disabled(function () {
+                                $tahapan = \App\Models\Tahapan::where('tahapan', 'PENGISIAN_TRIWULAN_I')->where('aktif',1)->first();
+                                if (!$tahapan) return true; // Nonaktif jika tahapan tidak ada
+                                $now = Carbon::now();
+                                return !$now->between($tahapan->tgl_mulai, $tahapan->tgl_selesai);
+                            })
+                            ->hint(function () {
+                                $tahapan = \App\Models\Tahapan::where('tahapan', 'PENGISIAN_TRIWULAN_I')->where('aktif',1)->first();
+                                return $tahapan ? "Diisi antara ".Carbon::parse($tahapan->tgl_mulai)->format('d F Y')." - ".Carbon::parse($tahapan->tgl_selesai)->format('d F Y')."" : 'Tahapan belum diatur';
+                            })
+                            ,
+                            Forms\Components\TextInput::make('nilai_realisasi_tw1')->required()->numeric()->label('Nilai Realisasi Triwulan I (Rp).')
+                            ->disabled(function () {
+                                $tahapan = \App\Models\Tahapan::where('tahapan', 'PENGISIAN_TRIWULAN_I')->where('aktif',1)->first();
+                                if (!$tahapan) return true; // Nonaktif jika tahapan tidak ada
+                                $now = Carbon::now();
+                                return !$now->between($tahapan->tgl_mulai, $tahapan->tgl_selesai);
+                            })
+                            ->hint(function () {
+                                $tahapan = \App\Models\Tahapan::where('tahapan', 'PENGISIAN_TRIWULAN_I')->where('aktif',1)->first();
+                                return $tahapan ? "Diisi antara ".Carbon::parse($tahapan->tgl_mulai)->format('d F Y')." - ".Carbon::parse($tahapan->tgl_selesai)->format('d F Y')."" : 'Tahapan belum diatur';
+                            })
+                            ,
+                            // Triwulan II
+                            Forms\Components\TextInput::make('jml_realisasi_tw2')->required()->numeric()->label('Jumlah Realisasi Triwulan II')
+                            ->disabled(function () {
+                                $tahapan = \App\Models\Tahapan::where('tahapan', 'PENGISIAN_TRIWULAN_II')->where('aktif',1)->first();
+                                if (!$tahapan) return true; // Nonaktif jika tahapan tidak ada
+                                $now = Carbon::now();
+                                return !$now->between($tahapan->tgl_mulai, $tahapan->tgl_selesai);
+                            })
+                            ->hint(function () {
+                                $tahapan = \App\Models\Tahapan::where('tahapan', 'PENGISIAN_TRIWULAN_II')->where('aktif',1)->first();
+                                return $tahapan ? "Diisi antara ".Carbon::parse($tahapan->tgl_mulai)->format('d F Y')." - ".Carbon::parse($tahapan->tgl_selesai)->format('d F Y')."" : 'Tahapan belum diatur';
+                            })
+                            ,
+                            Forms\Components\TextInput::make('nilai_realisasi_tw2')->required()->numeric()->label('Nilai Realisasi Triwulan II (Rp).')
+                            ->disabled(function () {
+                                $tahapan = \App\Models\Tahapan::where('tahapan', 'PENGISIAN_TRIWULAN_II')->where('aktif',1)->first();
+                                if (!$tahapan) return true; // Nonaktif jika tahapan tidak ada
+                                $now = Carbon::now();
+                                return !$now->between($tahapan->tgl_mulai, $tahapan->tgl_selesai);
+                            })
+                            ->hint(function () {
+                                $tahapan = \App\Models\Tahapan::where('tahapan', 'PENGISIAN_TRIWULAN_II')->where('aktif',1)->first();
+                                return $tahapan ? "Diisi antara ".Carbon::parse($tahapan->tgl_mulai)->format('d F Y')." - ".Carbon::parse($tahapan->tgl_selesai)->format('d F Y')."" : 'Tahapan belum diatur';
+                            })
+                            ,
+                            // Triwulan III
+                            Forms\Components\TextInput::make('jml_realisasi_tw3')->required()->numeric()->label('Jumlah Realisasi Triwulan III')
+                            ->disabled(function () {
+                                $tahapan = \App\Models\Tahapan::where('tahapan', 'PENGISIAN_TRIWULAN_III')->where('aktif',1)->first();
+                                if (!$tahapan) return true; // Nonaktif jika tahapan tidak ada
+                                $now = Carbon::now();
+                                return !$now->between($tahapan->tgl_mulai, $tahapan->tgl_selesai);
+                            })
+                            ->hint(function () {
+                                $tahapan = \App\Models\Tahapan::where('tahapan', 'PENGISIAN_TRIWULAN_III')->where('aktif',1)->first();
+                                return $tahapan ? "Diisi antara ".Carbon::parse($tahapan->tgl_mulai)->format('d F Y')." - ".Carbon::parse($tahapan->tgl_selesai)->format('d F Y')."" : 'Tahapan belum diatur';
+                            })
+                            ,
+                            Forms\Components\TextInput::make('nilai_realisasi_tw3')->required()->numeric()->label('Nilai Realisasi Triwulan III (Rp).')
+                            ->disabled(function () {
+                                $tahapan = \App\Models\Tahapan::where('tahapan', 'PENGISIAN_TRIWULAN_IV')->where('aktif',1)->first();
+                                if (!$tahapan) return true; // Nonaktif jika tahapan tidak ada
+                                $now = Carbon::now();
+                                return !$now->between($tahapan->tgl_mulai, $tahapan->tgl_selesai);
+                            })
+                            ->hint(function () {
+                                $tahapan = \App\Models\Tahapan::where('tahapan', 'PENGISIAN_TRIWULAN_IV')->where('aktif',1)->first();
+                                return $tahapan ? "Diisi antara ".Carbon::parse($tahapan->tgl_mulai)->format('d F Y')." - ".Carbon::parse($tahapan->tgl_selesai)->format('d F Y')."" : 'Tahapan belum diatur';
+                            })
+                            ,
+                            // Triwulan IV
+                            Forms\Components\TextInput::make('jml_realisasi_tw4')->required()->numeric()->label('Jumlah Realisasi Triwulan IV')
+                            ->disabled(function () {
+                                $tahapan = \App\Models\Tahapan::where('tahapan', 'PENGISIAN_TRIWULAN_IV')->where('aktif',1)->first();
+                                if (!$tahapan) return true; // Nonaktif jika tahapan tidak ada
+                                $now = Carbon::now();
+                                return !$now->between($tahapan->tgl_mulai, $tahapan->tgl_selesai);
+                            })
+                            ->hint(function () {
+                                $tahapan = \App\Models\Tahapan::where('tahapan', 'PENGISIAN_TRIWULAN_IV')->where('aktif',1)->first();
+                                return $tahapan ? "Diisi antara ".Carbon::parse($tahapan->tgl_mulai)->format('d F Y')." - ".Carbon::parse($tahapan->tgl_selesai)->format('d F Y')."" : 'Tahapan belum diatur';
+                            })
+                            ,
+                            Forms\Components\TextInput::make('nilai_realisasi_tw4')->required()->numeric()->label('Nilai Realisasi Triwulan IV (Rp).')
+                            ->disabled(function () {
+                                $tahapan = \App\Models\Tahapan::where('tahapan', 'PENGISIAN_TRIWULAN_IV')->where('aktif',1)->first();
+                                if (!$tahapan) return true; // Nonaktif jika tahapan tidak ada
+                                $now = Carbon::now();
+                                return !$now->between($tahapan->tgl_mulai, $tahapan->tgl_selesai);
+                            })
+                            ->hint(function () {
+                                $tahapan = \App\Models\Tahapan::where('tahapan', 'PENGISIAN_TRIWULAN_IV')->where('aktif',1)->first();
+                                return $tahapan ? "Diisi antara ".Carbon::parse($tahapan->tgl_mulai)->format('d F Y')." - ".Carbon::parse($tahapan->tgl_selesai)->format('d F Y')."" : 'Tahapan belum diatur';
+                            })
+                            ,
                         ])
 
                         // Forms\Components\Repeater::make('realisasi')->label('REALISASI')
@@ -197,18 +290,37 @@ class RenjaSubKegiatanResource extends Resource
                         // ])->columnSpan('full')->columns(3)->addActionLabel('Tambah Realisasi')->cloneable()
                     ])->columns(3)
                 ])
+                // ->action(function (array $data, RenjaSubKegiatan $record): void {
+                //     $record->jml_realisasi_tw1 = $data['jml_realisasi_tw1'];
+                //     $record->jml_realisasi_tw2 = $data['jml_realisasi_tw2'];
+                //     $record->jml_realisasi_tw3 = $data['jml_realisasi_tw3'];
+                //     $record->jml_realisasi_tw4 = $data['jml_realisasi_tw4'];
+                //     $record->nilai_realisasi_tw1 = $data['nilai_realisasi_tw1'];
+                //     $record->nilai_realisasi_tw2 = $data['nilai_realisasi_tw2'];
+                //     $record->nilai_realisasi_tw3 = $data['nilai_realisasi_tw3'];
+                //     $record->nilai_realisasi_tw4 = $data['nilai_realisasi_tw4'];
+                //     $record->nilai_target = $data['nilai_target'];
+                //     $record->save();
+                // })
                 ->action(function (array $data, RenjaSubKegiatan $record): void {
-                    $record->jml_realisasi_tw1 = $data['jml_realisasi_tw1'];
-                    $record->jml_realisasi_tw2 = $data['jml_realisasi_tw2'];
-                    $record->jml_realisasi_tw3 = $data['jml_realisasi_tw3'];
-                    $record->jml_realisasi_tw4 = $data['jml_realisasi_tw4'];
-                    $record->nilai_realisasi_tw1 = $data['nilai_realisasi_tw1'];
-                    $record->nilai_realisasi_tw2 = $data['nilai_realisasi_tw2'];
-                    $record->nilai_realisasi_tw3 = $data['nilai_realisasi_tw3'];
-                    $record->nilai_realisasi_tw4 = $data['nilai_realisasi_tw4'];
-                    $record->nilai_target = $data['nilai_target'];
-                    $record->save();
-                })
+                // Daftar field yang akan disimpan
+                $fields = [
+                    'jml_realisasi_tw1', 'jml_realisasi_tw2', 'jml_realisasi_tw3', 'jml_realisasi_tw4',
+                    'nilai_realisasi_tw1', 'nilai_realisasi_tw2', 'nilai_realisasi_tw3', 'nilai_realisasi_tw4',
+                    'nilai_target',
+                ];
+
+                // Iterasi melalui setiap field dan hanya simpan jika key tersedia dalam $data
+                foreach ($fields as $field) {
+                    if (isset($data[$field])) {
+                        $record->{$field} = $data[$field];
+                    }
+                    // Jika key tidak ada, field pada $record akan tetap dengan nilai sebelumnya
+                    // atau default, sehingga tidak terjadi error 'Undefined array key'.
+                }
+
+                $record->save();
+            })
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

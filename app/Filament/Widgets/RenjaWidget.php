@@ -34,11 +34,11 @@ class RenjaWidget extends BaseWidget
                 TextColumn::make('pagu_rkpd_perubahan')->label('Pagu Perubahan (Rp.)')->numeric(),
             ])
             ->actions([
-                Action::make('detail')->icon('heroicon-o-eye')
-                    ->action(function (RenjaProgram $record) {
-                        $record->is_featured = true;
-                        $record->save();
-                }),
+                // Action::make('detail')->icon('heroicon-o-eye')
+                //     ->action(function (RenjaProgram $record) {
+                //         $record->is_featured = true;
+                //         $record->save();
+                // }),
                 Action::make('kegiatan')->icon('heroicon-o-document-text')
                     ->url(fn (RenjaProgram $record): string => route('filament.admin.pages.renja-program', ['kode_program'=>$record->kode_program]))
                     ->action(function (RenjaProgram $record) {

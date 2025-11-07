@@ -7,7 +7,7 @@ return [
         'actions' => [
 
             'clone' => [
-                'label' => 'Clone',
+                'label' => 'Kloning',
             ],
 
             'add' => [
@@ -51,7 +51,7 @@ return [
             ],
 
             'delete' => [
-                'label' => 'Delete',
+                'label' => 'Hapus',
             ],
 
             'edit' => [
@@ -65,7 +65,7 @@ return [
                     'actions' => [
 
                         'save' => [
-                            'label' => 'Save changes',
+                            'label' => 'Simpan',
                         ],
 
                     ],
@@ -181,7 +181,7 @@ return [
                 ],
 
                 'save' => [
-                    'label' => 'Save',
+                    'label' => 'Simpan',
                 ],
 
                 'zoom_100' => [

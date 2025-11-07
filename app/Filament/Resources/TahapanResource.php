@@ -17,9 +17,9 @@ class TahapanResource extends Resource
 {
     protected static ?string $model = Tahapan::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
+    // protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
     protected static ?string $navigationLabel = 'Tahapan';
-    protected static ?string $navigationGroup = 'Settings';
+    protected static ?string $navigationGroup = 'SETTING';
 
     public static function form(Form $form): Form
     {

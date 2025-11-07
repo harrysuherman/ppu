@@ -4,6 +4,7 @@ namespace App\Filament\Pages;
 
 use Filament\Pages\Page;
 use App\Filament\Widgets\StatsOverview;
+use App\Filament\Widgets\SpmOverview;
 use App\Filament\Widgets\Chart1;
 use App\Filament\Widgets\Chart2;
 use App\Filament\Widgets\ProgramRenja;
@@ -23,6 +24,7 @@ class Dashboard extends Page
     {
         return [
             StatsOverview::class,
+            SpmOverview::class,
             RealisasiKegiatanStatsOverview::class,
             Chart1::class,
             Chart2::class,

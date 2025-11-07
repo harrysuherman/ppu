@@ -33,10 +33,9 @@ class RenjaSubKegiatan extends Model
         ]);
     }
 
-    public function skpd(){
-        return $this->belongsTo(SatuanKerja::class,'skpd_id','id')->withDefault([
-            'nama_satker'=> ''
-        ]);
+    public function skpd()
+    {
+        return $this->belongsTo(SatuanKerja::class, 'skpd_id', 'id')->withDefault(['nama_satker' => '']);
     }
 
     protected static function booted(): void

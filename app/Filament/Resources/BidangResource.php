@@ -17,9 +17,9 @@ class BidangResource extends Resource
 {
     protected static ?string $model = Bidang::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
+    // protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
     protected static ?string $navigationLabel = 'Bidang';
-    protected static ?string $navigationGroup = 'Settings';
+    protected static ?string $navigationGroup = 'SETTING';
 
     public static function form(Form $form): Form
     {
@@ -27,7 +27,7 @@ class BidangResource extends Resource
             ->schema([
                 Forms\Components\Card::make([
                     Forms\Components\TextInput::make('nama_bidang')->required(),
-                    Forms\Components\Select::make('satuan_kerja_id')
+                    Forms\Components\Select::make('satuan_kerja_id')->label('Satuan Kerja')
                     ->options(\App\Models\SatuanKerja::orderBy('nama_satker','asc')->get()->pluck('nama_satker','id'))
                     ->searchable()->multiple(),
 

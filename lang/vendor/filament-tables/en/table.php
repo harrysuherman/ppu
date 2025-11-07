@@ -103,9 +103,9 @@ return [
 
     'empty' => [
 
-        'heading' => 'No :model',
+        'heading' => 'Tidak ada data',
 
-        'description' => 'Create a :model to get started.',
+        'description' => 'Silahkan tambah data baru',
 
     ],
 

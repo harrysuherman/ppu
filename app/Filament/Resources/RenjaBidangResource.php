@@ -17,7 +17,7 @@ class RenjaBidangResource extends Resource
 {
     protected static ?string $model = RenjaBidang::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
+    // protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
     protected static ?string $navigationLabel = 'Bidang';
     protected static ?string $navigationGroup = 'Renja';
     protected static ?int $navigationSort = 2;

@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect('admin/dashboard');
 });
+Route::get('/launch', function () {
+    return view('launch');
+});
 Route::get('/admin', function () {
     return redirect('admin/dashboard');
 });

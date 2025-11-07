@@ -18,8 +18,8 @@ class SatuanKerjaResource extends Resource
     protected static ?string $model = SatuanKerja::class;
     protected static ?string $title = 'Satuan Kerja';
     protected static ?string $navigationLabel = 'Satuan Kerja';
-    protected static ?string $navigationGroup = 'Settings';
-    protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
+    protected static ?string $navigationGroup = 'SETTING';
+    // protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
 
     public static function form(Form $form): Form
     {

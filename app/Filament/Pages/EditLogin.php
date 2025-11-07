@@ -20,13 +20,13 @@ class EditLogin extends BaseLogin
                 $this->getEmailFormComponent(),
                 $this->getPasswordFormComponent(),
                 Select::make('tahun_anggaran')->options([
-                    '2024'=>'2024',
                     '2025'=>'2025',
-                ])->default(date('Y')),
-                Select::make('jenis_anggaran')->options([
-                    'Murni'=>'Murni',
+                ])->default(date(2025)),
+                // Select::make('jenis_anggaran')->options([
+                    // 'Murni'=>'Murni',
                     // 'Perubahan'=>'Perubahan',
-                ])->default('Murni'),
+                // ])->default('Murni')
+                // ,
                 $this->getRememberFormComponent(),
             ]);
     }

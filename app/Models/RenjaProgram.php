@@ -26,4 +26,9 @@ class RenjaProgram extends Model
     public function sub_kegiatan(){
         return $this->hasMany(RenjaSubKegiatan::class,'kode_program','kode_program');
     }
+
+    public function skpd()
+    {
+        return $this->belongsTo(SatuanKerja::class, 'skpd_id', 'id')->withDefault(['nama_satker' => '']);
+    }
 }

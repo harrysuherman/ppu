@@ -30,7 +30,7 @@ class UserResource extends Resource
     protected static ?int $navigationSort = 9;
     protected static ?string $navigationLabel = "Pengguna";
 
-    protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
+    // protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
 
     public static function getPluralLabel(): string
     {
@@ -44,7 +44,7 @@ class UserResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return config('filament-users.group');
+        return 'SETTING';
     }
 
     public function getTitle(): string

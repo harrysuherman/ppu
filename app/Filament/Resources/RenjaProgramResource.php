@@ -18,9 +18,9 @@ class RenjaProgramResource extends Resource
 {
     protected static ?string $model = RenjaProgram::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
+    // protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
     protected static ?string $navigationLabel = 'Program';
-    protected static ?string $navigationGroup = 'Renja';
+    protected static ?string $navigationGroup = 'RENJA';
     protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form

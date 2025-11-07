@@ -17,9 +17,9 @@ class RenjaKegiatanResource extends Resource
 {
     protected static ?string $model = RenjaKegiatan::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
+    // protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
     protected static ?string $navigationLabel = 'Kegiatan';
-    protected static ?string $navigationGroup = 'Renja';
+    protected static ?string $navigationGroup = 'RENJA';
     protected static ?int $navigationSort = 4;
 
     public static function form(Form $form): Form

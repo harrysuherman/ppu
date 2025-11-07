@@ -11,8 +11,9 @@ use App\Filament\Widgets\RenjaWidget;
 
 class ImportRenja extends Page
 {
-    protected static ?string $navigationIcon = 'heroicon-o-table-cells';
+    // protected static ?string $navigationIcon = 'heroicon-o-table-cells';
     protected static ?string $navigationLabel = 'Import Renja';
+    protected static ?string $navigationGroup = 'RENJA';
 
     protected static string $view = 'filament.pages.import-renja';
 

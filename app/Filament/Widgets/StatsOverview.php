@@ -24,11 +24,11 @@ class StatsOverview extends BaseWidget
             $pagu_rkpd_perubahan = DB::table('renja_sub_kegiatan')->whereSkpdId(Auth::user()->satuan_kerja_id)->whereTahunAnggaran(session('tahun_anggaran'))->sum('pagu_rkpd_perubahan');
         }
         return [
-        Stat::make('PAGU RKPD', number_format($pagu_rkpd))
+        Stat::make('PAGU RKPD', number_format($pagu_rkpd))->icon('heroicon-o-currency-dollar')
             ,
-        Stat::make('PAGU APBD', number_format($pagu_apbd))
+        Stat::make('PAGU APBD', number_format($pagu_apbd))->icon('heroicon-o-currency-dollar')
             ,
-        Stat::make('PAGU RKPD PERUBAHAN', number_format($pagu_rkpd_perubahan))
+        Stat::make('PAGU RKPD PERUBAHAN', number_format($pagu_rkpd_perubahan))->icon('heroicon-o-currency-dollar')
             ,
         ];
     }

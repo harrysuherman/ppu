@@ -5,74 +5,86 @@
                 Memperbarui data progres...
             </div>
             <br>
-            <button wire:click="$dispatch('cetak')" style="--c-400:var(--primary-400);--c-500:var(--primary-500);--c-600:var(--primary-600);" class="fi-btn relative grid-flow-col items-center justify-center font-semibold outline-none transition duration-75 focus-visible:ring-2 rounded-lg fi-color-custom fi-btn-color-primary fi-color-primary fi-size-md fi-btn-size-md gap-1.5 px-3 py-2 text-sm inline-grid shadow-sm bg-custom-600 text-white hover:bg-custom-500 focus-visible:ring-custom-500/50 dark:bg-custom-500 dark:hover:bg-custom-400 dark:focus-visible:ring-custom-400/50 fi-ac-action fi-ac-btn-action">Cetak</button>
             <div id="printArea" class="table-wrp" style="height: 70vh;">
             <h2 class="uppercase mb-2">LAPORAN HASIL EVALUASU RKPD {{ session('thn_anggaran') }}</h2>
                 <table class="w-full text-sm text-gray-300 dark:text-gray-400 ">
-                    <thead
-                        class="text-xs text-center uppercase sticky top-0" style="background:#CCC; z-index:1000">
-                        <tr>
-                            <th scope="col" class="px-2 border  py-2 sticky" rowspan="2" style="background:#CCC; left:40px;  z-index:2000">
+                    <thead class="text-xs text-center uppercase sticky top-0">
+                        <tr class="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-200 border-b border-gray-600 dark:border-gray-500">
+                            <th scope="col" class="px-2 border py-2 sticky left-40px z-[2000] border-gray-600 dark:border-gray-500" rowspan="2">
                                 Kode
                             </th>
-                            <th scope="col" class="px-2 border  py-2 sticky" rowspan="2" style="min-width:300px; background:#CCC; left:40px;  z-index:2000">
+                            <th scope="col" class="px-2 border py-2 sticky left-40px z-[2000] border-gray-600 dark:border-gray-500" rowspan="2" style="min-width:300px;">
                                 Urusan/Bidang Urusan Pemerintahan Daerah dan Program/ Kegiatan/Sub Kegiatan
                             </th>
-                            <th scope="col" class="px-2 border  py-2 sticky" rowspan="2" style="min-width:300px; background:#CCC; left:40px;  z-index:2000">
+                            <th scope="col" class="px-2 border py-2 sticky left-40px z-[2000] border-gray-600 dark:border-gray-500" rowspan="2" style="min-width:300px;">
                                 Indikator Kinerja Program (Outcome) / Kegiatan (Output)
                             </th>
-                            <th scope="col" class="px-2 border  py-2" rowspan="2" colspan="2">
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500" rowspan="2" colspan="2">
                                 Target RPD Pada Tahun 2024 s/d 2026
                             </th>
-                            <th scope="col" class="px-2 border  py-2" rowspan="2" colspan="2">
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500" rowspan="2" colspan="2">
                                 Realisasi Capaian Kinerja RPJMD s/d RKPD Tahun (2023)
                             </th>
-                            <th scope="col" class="px-2 border  py-2" rowspan="2" colspan="2">
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500" rowspan="2" colspan="2">
                                 Target Kinerja dan Anggaran Renja Tahun Berjalan Yang Dievaluasi (2024)
                             </th>
-                            <th scope="col" class="px-2 border  py-2" rowspan="2" colspan="2">Target Kinerja dan Anggaran Perubahan Tahun Berjalan Yang Dievaluasi (2023)</th>
-                            <th scope="col" class="px-2 border  py-2" colspan="8">Realisasi Kinerja Triwulan</th>
-                            <th scope="col" class="px-2 border  py-2" rowspan="2" colspan="2">Realisasi Capaian Kinerja Dan Anggaran Renja  yang Dievaluasi (2024)</th>
-                            <th scope="col" class="px-2 border  py-2" rowspan="2" colspan="2">Tingkat Capaian Kinerja dari Realisasi Anggaran RKPD Tahun 2024 (%)</th>
-                            <th scope="col" class="px-2 border  py-2" rowspan="2" colspan="2">Realisasi Kinerja dan Anggaran RPD s/d Tahun 2024 (Akhir Tahun Pelaksanaan RKPD)</th>
-                            <th scope="col" class="px-2 border  py-2" rowspan="2" colspan="2">Tingkat Capaian Kinerja dan Realisasi Anggaran RPD s/d Tahun 2024</th>
-                            <th scope="col" class="px-2 border  py-2" rowspan="2">SKPD Penanggung Jawab</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500" rowspan="2" colspan="2">
+                                Target Kinerja dan Anggaran Perubahan Tahun Berjalan Yang Dievaluasi (2023)
+                            </th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500" colspan="8">
+                                Realisasi Kinerja Triwulan
+                            </th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500" rowspan="2" colspan="2">
+                                Realisasi Capaian Kinerja Dan Anggaran Renja yang Dievaluasi (2024)
+                            </th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500" rowspan="2" colspan="2">
+                                Tingkat Capaian Kinerja dari Realisasi Anggaran RKPD Tahun 2024 (%)
+                            </th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500" rowspan="2" colspan="2">
+                                Realisasi Kinerja dan Anggaran RPD s/d Tahun 2024 (Akhir Tahun Pelaksanaan RKPD)
+                            </th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500" rowspan="2" colspan="2">
+                                Tingkat Capaian Kinerja dan Realisasi Anggaran RPD s/d Tahun 2024
+                            </th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500" rowspan="2">
+                                SKPD Penanggung Jawab
+                            </th>
                         </tr>
-                        <tr>
-                            <th scope="col" class="px-2 border  py-2" colspan="2">I</th>
-                            <th scope="col" class="px-2 border  py-2" colspan="2">II</th>
-                            <th scope="col" class="px-2 border  py-2" colspan="2">III</th>
-                            <th scope="col" class="px-2 border  py-2" colspan="2">IV</th>
+                        <tr class="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-200 border-b border-gray-600 dark:border-gray-500">
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500" colspan="2">I</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500" colspan="2">II</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500" colspan="2">III</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500" colspan="2">IV</th>
                         </tr>
-                        <tr>
-                            <th scope="col" class="px-2 border  py-2"></th>
-                            <th scope="col" class="px-2 border  py-2"></th>
-                            <th scope="col" class="px-2 border  py-2"></th>
-                            <th scope="col" class="px-2 border  py-2">K</th>
-                            <th scope="col" class="px-2 border  py-2">Rp</th>
-                            <th scope="col" class="px-2 border  py-2">K</th>
-                            <th scope="col" class="px-2 border  py-2">Rp</th>
-                            <th scope="col" class="px-2 border  py-2">K</th>
-                            <th scope="col" class="px-2 border  py-2">Rp</th>
-                            <th scope="col" class="px-2 border  py-2">K</th>
-                            <th scope="col" class="px-2 border  py-2">Rp</th>
-                            <th scope="col" class="px-2 border  py-2">K</th>
-                            <th scope="col" class="px-2 border  py-2">Rp</th>
-                            <th scope="col" class="px-2 border  py-2">K</th>
-                            <th scope="col" class="px-2 border  py-2">Rp</th>
-                            <th scope="col" class="px-2 border  py-2">K</th>
-                            <th scope="col" class="px-2 border  py-2">Rp</th>
-                            <th scope="col" class="px-2 border  py-2">K</th>
-                            <th scope="col" class="px-2 border  py-2">Rp</th>
-                            <th scope="col" class="px-2 border  py-2">K</th>
-                            <th scope="col" class="px-2 border  py-2">Rp</th>
-                            <th scope="col" class="px-2 border  py-2">K</th>
-                            <th scope="col" class="px-2 border  py-2">Rp</th>
-                            <th scope="col" class="px-2 border  py-2">K</th>
-                            <th scope="col" class="px-2 border  py-2">Rp</th>
-                            <th scope="col" class="px-2 border  py-2">K</th>
-                            <th scope="col" class="px-2 border  py-2">Rp</th>
-                            <th scope="col" class="px-2 border  py-2"></th>
+                        <tr class="bg-gray-100 dark:bg-gray-600 text-gray-800 dark:text-gray-300 border-b border-gray-600 dark:border-gray-500">
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500"></th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500"></th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500"></th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">K</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">Rp</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">K</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">Rp</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">K</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">Rp</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">K</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">Rp</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">K</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">Rp</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">K</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">Rp</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">K</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">Rp</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">K</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">Rp</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">K</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">Rp</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">K</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">Rp</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">K</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">Rp</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">K</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500">Rp</th>
+                            <th scope="col" class="px-2 border py-2 border-gray-600 dark:border-gray-500"></th>
                         </tr>
                     </thead>
                     <tbody class="h-96 overflow-y-auto">

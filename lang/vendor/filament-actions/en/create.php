@@ -4,20 +4,20 @@ return [
 
     'single' => [
 
-        'label' => 'New :label',
+        'label' => 'Tambah',
 
         'modal' => [
 
-            'heading' => 'Create :label',
+            'heading' => 'Tambah :label',
 
             'actions' => [
 
                 'create' => [
-                    'label' => 'Create',
+                    'label' => 'Tambah',
                 ],
 
                 'create_another' => [
-                    'label' => 'Create & create another',
+                    'label' => 'Tambah & Tambah Lainnya',
                 ],
 
             ],
@@ -27,7 +27,7 @@ return [
         'notifications' => [
 
             'created' => [
-                'title' => 'Created',
+                'title' => 'Tambahd',
             ],
 
         ],

@@ -8,9 +8,9 @@ use App\Filament\Widgets\RealisasiKegiatanTable;
 
 class RealisasiKegiatan extends Page
 {
-    protected static ?string $navigationIcon = 'heroicon-o-banknotes';
+    // protected static ?string $navigationIcon = 'heroicon-o-banknotes';
     protected static ?string $navigationLabel = 'Realisasi Kegiatan';
-    protected static ?string $navigationGroup = 'Laporan';
+    protected static ?string $navigationGroup = 'LAPORAN';
 
     protected static string $view = 'filament.pages.realisasi-kegiatan';
 

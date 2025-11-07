@@ -17,9 +17,9 @@ class RenjaUrusanResource extends Resource
 {
     protected static ?string $model = RenjaUrusan::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
+    // protected static ?string $navigationIcon = 'heroicon-o-chevron-right';
     protected static ?string $navigationLabel = 'Urusan';
-    protected static ?string $navigationGroup = 'Renja';
+    protected static ?string $navigationGroup = 'RENJA';
     protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form

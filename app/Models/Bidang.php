@@ -18,4 +18,6 @@ class Bidang extends Model
         'satuan_kerja_id'=> 'array'
     ];
 
+
+
 }
